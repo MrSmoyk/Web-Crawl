@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Web_Crawl_Console;
+﻿namespace Web_Crawl_Console;
 
 public class StartUp
 {
@@ -47,10 +41,9 @@ public class StartUp
     {
         PrintInSitemapButNotCrawled();
         PrintCrawledButNotInSitemap();
+        PrintCrawlResultWithTimings();
         PrintDisallowedFromRobotRules();
         PrintBrokenLinks();
-        PrintCrawlResultWithTimings();
-
     }
 
     private void PrintInSitemapButNotCrawled()
@@ -71,7 +64,8 @@ public class StartUp
         }
         else if (pages.Count == 0)
         {
-            Console.WriteLine($"\r\nCan't print URLs existing in sitemap.xml but not found on crawl because links count is 0!");
+            Console.WriteLine($"\r\nCan't print URLs existing in sitemap.xml " +
+                $"\r\nbut not found on crawl because links count is 0!");
         }
     }
 
@@ -93,7 +87,8 @@ public class StartUp
         }
         else if (pages.Count == 0)
         {
-            Console.WriteLine($"\r\nCan't print URLs founded by crawling the website but not in sitemap.xml because links count is 0!");
+            Console.WriteLine($"\r\nCan't print URLs founded by crawling the website " +
+                $"\r\nbut not in sitemap.xml because links count is 0!");
         }
 
     }
@@ -115,7 +110,8 @@ public class StartUp
         }
         else if (siteCrawler.Result.Count == 0)
         {
-            Console.WriteLine($"\r\nCan't print URLs founded by crawling with timing because links count is 0!");
+            Console.WriteLine($"\r\nCan't print URLs founded by crawling with timing " +
+                $"\r\nbecause links count is 0!");
         }
 
     }
@@ -134,7 +130,8 @@ public class StartUp
         }
         else if (pages.Count == 0)
         {
-            Console.WriteLine($"\r\nCan't print broken URLs founded by crawling the website because links count is 0!");
+            Console.WriteLine($"\r\nCan't print broken URLs founded by crawling the website " +
+                $"\r\nbecause links count is 0!");
         }
     }
 
@@ -153,7 +150,8 @@ public class StartUp
         }
         else if (pages.Count == 0 | !siteCrawler.SitemapCrawler.RobotsTxtFound)
         {
-            Console.WriteLine($"\r\nCan't print disallowed by robots.txt rules URLs founded by crawling the website because links count is 0 or robots.txt not found!");
+            Console.WriteLine($"\r\nCan't print disallowed by robots.txt rules URLs founded by crawling the website" +
+                $"\r\n because links count is 0 or robots.txt not found!");
         }
     }
 

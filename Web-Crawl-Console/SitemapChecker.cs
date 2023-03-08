@@ -62,6 +62,7 @@ public class SitemapChecker
                 }
                 UrlsFromSitemap = UrlsFromSitemapPool.Distinct().ToList();
                 Console.WriteLine($"Current processed unique sitemap URLs is : {UrlsFromSitemap.Count}");
+                Thread.Sleep(3000);
 
             }
             else
@@ -75,6 +76,7 @@ public class SitemapChecker
         {
             Console.WriteLine($"\r\nFail with: {ex.Message}");
             Console.WriteLine("\r\nSitemap results will not be taken into account...");
+            Thread.Sleep(3000);
         }
 
     }
@@ -216,13 +218,13 @@ public class SitemapChecker
     {
         if (sitemap != null && KeepProcessing)
         {
-            UrlsFromSitemapPool.AddRange(sitemap.Items.Select(x => HttpUtility.UrlDecode(x.Location.ToString().TrimEnd('/'))));
+            UrlsFromSitemapPool.AddRange(sitemap.Items.Select(x => HttpUtility.UrlDecode(x.Location.ToString().ToLower().TrimEnd('/'))));
             ValidSitemapXmlFound = true;
             Console.WriteLine($"Current processing sitemap URLs is : {UrlsFromSitemapPool.Count}");
         }
         else if (tUrls != null && KeepProcessing)
         {
-            UrlsFromSitemapPool.AddRange(tUrls.Select(x => HttpUtility.UrlDecode(x.loc.TrimEnd('/'))));
+            UrlsFromSitemapPool.AddRange(tUrls.Select(x => HttpUtility.UrlDecode(x.loc.ToLower().TrimEnd('/'))));
             ValidSitemapXmlFound = true;
             Console.WriteLine($"Current processing sitemap URLs is : {UrlsFromSitemapPool.Count}");
         }

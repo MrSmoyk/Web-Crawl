@@ -21,9 +21,9 @@ public class SiteCrawler
     private Uri startingURL { get; set; }
 
     private ConcurrentBag<string> ImageFormatExceptions = new ConcurrentBag<string>() { ".gif", ".jpg", ".jpeg",
-        ".png",".ico",".TIFF",".webp",".eps"
-        ,".svg",".psd",".indd",".cdr",".ai"
-        ,".raw",".txt",".xml",".pdf",".dib", ".snippet" };
+        ".png",".ico",".TIFF",".webp",".eps", ".ttf", ".wav", ".zip", ".crt", ".traineddata"
+        ,".svg",".psd",".indd",".cdr",".ai", ".xlsx", ".docx", ".msi", ".crl"
+        ,".raw",".txt",".xml",".pdf",".dib", ".snippet", ".pfx" };
 
     public ConcurrentBag<Uri> DisallowedFromRobotRules = new ConcurrentBag<Uri>();
     private ConcurrentDictionary<string, long> PingedPages = new ConcurrentDictionary<string, long>();
@@ -61,6 +61,8 @@ public class SiteCrawler
 
             Result = PingedPages.OrderBy(x => x.Value).ToList();
         }
+
+        Console.WriteLine("\r\nDone!");
 
     }
 
