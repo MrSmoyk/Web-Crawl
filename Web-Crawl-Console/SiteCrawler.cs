@@ -26,6 +26,7 @@ public class SiteCrawler
         ,".raw",".txt",".xml",".pdf",".dib", ".snippet", ".pfx" };
 
     public ConcurrentBag<Uri> DisallowedFromRobotRules = new ConcurrentBag<Uri>();
+
     private ConcurrentDictionary<string, long> PingedPages = new ConcurrentDictionary<string, long>();
     private ConcurrentBag<string> UniqueURLs { get; set; } = new ConcurrentBag<string>();
     public ConcurrentBag<Uri> BrokenLinks { get; set; } = new ConcurrentBag<Uri>();
@@ -63,6 +64,10 @@ public class SiteCrawler
         }
 
         Console.WriteLine("\r\nDone!");
+        Console.WriteLine($"\r\nThe number of Unique URLs is : {UniqueURLs.Count}" + 
+            $"\r\nThe number of Pinged URLs is : {Result.Count}" +
+            $"\r\nThe number of Disallowed from robots.txt rules URLs is : {DisallowedFromRobotRules.Count}" +
+            $"\r\nThe number of Broken URLs is : {BrokenLinks.Count}");
 
     }
 

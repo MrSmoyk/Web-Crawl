@@ -151,7 +151,7 @@ public class StartUp
         else if (pages.Count == 0 | !siteCrawler.SitemapCrawler.RobotsTxtFound)
         {
             Console.WriteLine($"\r\nCan't print disallowed by robots.txt rules URLs founded by crawling the website" +
-                $"\r\n because links count is 0 or robots.txt not found!");
+                $"\r\nbecause links count is 0 or robots.txt not found!");
         }
     }
 
